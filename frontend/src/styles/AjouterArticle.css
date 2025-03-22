@@ -1,0 +1,275 @@
+/* AjouterArticle.css */
+
+/* Variables CSS pour une gestion centralisée des couleurs et des styles */
+:root {
+  --primary-color: #2563eb; /* Bleu principal */
+  --primary-hover: #1d4ed8; /* Bleu au survol */
+  --secondary-color: #f0f4f8; /* Arrière-plan secondaire */
+  --text-color: #1e293b; /* Couleur du texte */
+  --success-color: #16a34a; /* Couleur de succès */
+  --error-color: #dc2626; /* Couleur d'erreur */
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Structure principale */
+.app-container {
+  flex: 1;
+  padding: 2.5rem;
+  background-color: var(--secondary-color);
+  min-height: 100vh;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.app-bar {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.app-bar-title {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.025em;
+}
+
+/* Conteneur du formulaire */
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Champs de formulaire */
+.form-group {
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+  text-transform: capitalize;
+  font-size: 0.95rem;
+}
+
+.form-input,
+.form-textarea,
+.form-file {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: white;
+  transition: var(--transition);
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  transform: scale(1.02);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-file {
+  padding: 0.75rem;
+  cursor: pointer;
+  background: var(--secondary-color);
+  border: 2px dashed #cbd5e1;
+}
+
+.form-file:hover {
+  background: #e2e8f0;
+  border-color: var(--primary-color);
+}
+
+/* Bouton de soumission */
+.submit-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  transition: var(--transition);
+}
+
+.submit-button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Messages de feedback */
+.form-message {
+  text-align: center;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-success {
+  background-color: #dcfce7;
+  color: var(--success-color);
+  border: 1px solid #bbf7d0;
+}
+
+.message-error {
+  background-color: #fee2e2;
+  color: var(--error-color);
+  border: 1px solid #fecaca;
+}
+
+/* Effets supplémentaires */
+.form-group:hover .form-label {
+  color: var(--primary-color);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1.5rem;
+  }
+
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .app-bar-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .submit-button {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-file {
+    padding: 0.75rem;
+  }
+}
+/* Style de base pour le select */
+select {
+  appearance: none;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #3b82f6; /* Bordure bleue */
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+select:hover {
+  border-color: #2563eb;
+}
+
+/* Effet quand on clique sur le select */
+select:focus {
+  border-color: #1e40af;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+/* Style des options */
+select option {
+  padding: 10px;
+  background: white;
+  color: #333;
+}
+
+/* Style de l'option sélectionnée */
+select option:checked {
+  background: #3b82f6;
+  color: white;
+}

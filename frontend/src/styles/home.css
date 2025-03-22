@@ -1,0 +1,379 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #b4cac3;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Container for the entire page */
+.home-content {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  overflow-y: auto;
+  max-height: calc(100vh - 40px);
+  border-radius: 12px;
+  margin: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Banner */
+.Ban {
+  background: linear-gradient(135deg, #55575a, #7c8c9c);
+  width: 100%;
+  color: white;
+  font-size: 28px;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-link {
+  display: block;
+  margin: 0;
+  padding: 12px 20px;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.logout-link {
+  text-decoration: underline;
+}
+
+/* Add Button */
+.ajouter {
+  cursor: pointer;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  font-size: 16px;
+  width: 180px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ajouter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ajouter:active {
+  transform: translateY(0);
+}
+
+/* Modal Styles */
+.modalA {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-contentA {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #f6f1f1;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Table Styles */
+.article-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: rgb(248, 247, 247);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-table th,
+.article-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ada0a0;
+}
+
+.article-table th {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  color: rgb(246, 241, 241);
+  font-weight: 500;
+}
+
+.article-table tr:hover {
+  background-color: #787676;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.article-table td {
+  color: #232222;
+}
+
+/* Buttons */
+.buttonAR {
+  cursor: pointer;
+  width: 85px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Ed {
+  background: linear-gradient(135deg, #ffce3b, #5a5954);
+  color: #535252;
+}
+
+.Ed:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(214, 208, 208, 0.2);
+}
+
+.Del {
+  background: linear-gradient(135deg, #544f4e, #817a79);
+  color: white;
+  margin-right: 100px;
+  size-adjust: 10px;
+}
+
+.Del:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(203, 193, 193, 0.2);
+}
+
+/* Edit Popup */
+.editP {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: rgba(243, 239, 239, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+  max-height: calc(100vh - 40px);
+}
+
+.editP form {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 4px 20px rgba(236, 228, 228, 0.2);
+}
+
+.editP input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.editP button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.editP button[type="submit"] {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  color: white;
+}
+
+.editP button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.editP button[type="button"] {
+  background: linear-gradient(135deg, #e0e0e0, #d0d0d0);
+  color: #333;
+  margin-left: 10px;
+}
+
+.editP button[type="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* General Button Styles */
+.button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(221, 219, 219, 0.1);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Primary Button */
+.button.primary {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  color: white;
+}
+
+.button.primary:hover {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+}
+
+/* Secondary Button */
+.button.secondary {
+  background: linear-gradient(135deg, #7a7973, #7c7a74);
+  color: #333;
+}
+
+.button.secondary:hover {
+  background: linear-gradient(135deg, #c1bfb8, #a5a39f);
+}
+
+/* Danger Button */
+.button.danger {
+  background: linear-gradient(135deg, #f0bab4, #6a6565);
+  color: white;
+}
+
+.button.danger:hover {
+  background: linear-gradient(135deg, #d1c5c4, #2c2a29);
+}
+
+/* Outline Button */
+.button.outline {
+  background: transparent;
+  border: 2px solid #34495e;
+  color: #34495e;
+}
+
+.button.outline:hover {
+  background: #34495e;
+  color: white;
+}
+
+/* Icon Button */
+.button.icon {
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Small Button */
+.button.small {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+/* Large Button */
+.button.large {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+/* Disabled Button */
+.button:disabled {
+  background: #e0e0e0;
+  color: #a0a0a0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
