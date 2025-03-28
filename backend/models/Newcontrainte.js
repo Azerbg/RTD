@@ -17,6 +17,6 @@ const newArticleSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Create a new collection called "newarticles"
-const NewArticle = mongoose.model("NewArticle", newArticleSchema);
+const Newcontrainte = mongoose.model("Newcontrainte", newArticleSchema);
 
-module.exports = NewArticle;
+module.exports = Newcontrainte;

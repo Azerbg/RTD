@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const ContrainteSchema = new mongoose.Schema({
+// Check if the model is already registered, otherwise create it
+const Contrainte = mongoose.models.Contrainte || mongoose.model('Contrainte', new mongoose.Schema({
   CC: String,
   Ref: String,
   Saison: String,
@@ -10,11 +11,11 @@ const ContrainteSchema = new mongoose.Schema({
   DetailsM: String,
   Actions: String,
   Description: String,
-  Illustration: String,
-  IMAGE: String,
   Type: String,
   Intensite: String,
-  createdAt: { type: Date, default: Date.now },
-});
+  IMAGE: String,
+  DateCreation: { type: Date, default: Date.now },
+  media: String, // Optional: media for file upload
+}));
 
-module.exports = mongoose.model("Contrainte", ContrainteSchema);
+module.exports = Contrainte;

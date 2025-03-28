@@ -17,8 +17,7 @@ const AjouterContrainte = () => {
     DetailsM: "",
     Actions: "",
     Description: "",
-    Illustration: null,
-    IMAGE: null,
+    Media: null, // Removed unused IMAGE field
     Type: "",
     Intensite: "",
   });
@@ -38,7 +37,9 @@ const AjouterContrainte = () => {
     try {
       const formData = new FormData();
       Object.keys(newContrainte).forEach((key) => {
-        formData.append(key, newContrainte[key]);
+        if (newContrainte[key]) {
+          formData.append(key, newContrainte[key]);
+        }
       });
 
       const response = await fetch("http://localhost:3000/contraintes/new", {
@@ -51,6 +52,7 @@ const AjouterContrainte = () => {
       setMessage("✅ Contrainte ajoutée avec succès !");
       setIsPopupOpen(true);
 
+      // Réinitialisation de l'état après soumission
       setNewContrainte({
         CC: "",
         Ref: "",
@@ -61,15 +63,15 @@ const AjouterContrainte = () => {
         DetailsM: "",
         Actions: "",
         Description: "",
-        Illustration: null,
-        IMAGE: null,
+        Media: null,
         Type: "",
         Intensite: "",
       });
 
+      // Fermer le popup après 2 secondes, puis rediriger
       setTimeout(() => {
         setIsPopupOpen(false);
-        navigate("/contraintes");
+        navigate("/home");
       }, 2000);
     } catch (error) {
       setMessage("❌ Erreur lors de l'ajout de la contrainte.");
@@ -121,6 +123,35 @@ const AjouterContrainte = () => {
               )
             )}
 
+            {/* Champ de sélection de date */}
+            <div className="flex flex-col">
+              <label className="text-sm font-medium text-gray-700 capitalize mb-2">
+                Date de Saisie :
+              </label>
+              <input
+                type="date"
+                name="DateDeSaisie"
+                className="p-3 border border-blue-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                value={newContrainte.DateDeSaisie}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            {/* Champ d'ajout de photo ou vidéo */}
+            <div className="flex flex-col">
+              <label className="text-sm font-medium text-gray-700 capitalize mb-2">
+                Ajouter une photo ou une vidéo :
+              </label>
+              <input
+                type="file"
+                name="Media"
+                accept="image/*,video/*"
+                className="p-3 border border-blue-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onChange={handleChange}
+              />
+            </div>
+
             {/* Sélecteur pour l'intensité */}
             <div className="flex flex-col">
               <label className="text-sm font-medium text-gray-700 capitalize mb-2">
@@ -152,17 +183,12 @@ const AjouterContrainte = () => {
         </div>
       </div>
 
-      {/* ✅ Pop-up de succès */}
+      {/* Popup */}
       {isPopupOpen && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-30">
-          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-            <p className="text-green-600 font-semibold text-lg">{message}</p>
-            <button
-              onClick={() => setIsPopupOpen(false)}
-              className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-            >
-              OK
-            </button>
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <p>{message}</p>
+            <button onClick={() => setIsPopupOpen(false)}>Fermer</button>
           </div>
         </div>
       )}

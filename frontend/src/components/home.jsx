@@ -39,14 +39,14 @@ const Home = () => {
     loading,
     error,
   } = useFetchData(
-    "https://mern-gestion-de-stock-production.up.railway.app/articles",
+    "http://localhost:3000/contraintes",
     refresh
   );
 
   const handleDeleteArticle = async (id) => {
     try {
       const response = await fetch(
-        `https://mern-gestion-de-stock-production.up.railway.app/articles/${id}`,
+        `http://localhost:3000/contraintes/${id}`,
         { method: "DELETE" }
       );
       if (!response.ok) throw new Error("Échec de la suppression");
@@ -60,7 +60,7 @@ const Home = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://mern-gestion-de-stock-production.up.railway.app/articles/${editingArticle.id_article}`,
+        `http://localhost:3000/contraintes/${editingArticle.id_article}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

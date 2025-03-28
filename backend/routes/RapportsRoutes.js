@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const PDFDocument = require("pdfkit");
 const Rapport = require("../models/Rapport");
-const Article = require("../models/Article");
+
 const Commande = require("../models/Commandes");
 const Fournisseur = require("../models/Fournisseur");
 const Categorie = require("../models/Categorie");

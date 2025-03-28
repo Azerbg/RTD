@@ -1,24 +1,24 @@
 // src/components/Signup.js
 
-import React, { useState } from 'react';
-import axios from 'axios';
-import '../styles/signup.css';
-import { Link, useNavigate } from 'react-router-dom'; 
+import React, { useState } from "react";
+import axios from "axios";
+import "../styles/signup.css";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [image, setImage] = useState(null); 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImage(reader.result); 
+      setImage(reader.result);
     };
     reader.readAsDataURL(file);
   };
@@ -35,32 +35,37 @@ function Signup() {
     };
 
     try {
-      const response = await axios.post('https://mern-gestion-de-stock-production.up.railway.app/signup', userData);
-      console.log('Signup successful', response.data);
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/users`,
+        userData
+      );
+
+      console.log("Signup successful", response.data);
 
       if (response.data.status === "approved") {
-        navigate('/home');
+        navigate("/home");
       } else {
         alert("Your account is pending approval.");
       }
-
     } catch (error) {
       if (error.response) {
-        console.error('Backend error:', error.response.data);
+        console.error("Backend error:", error.response.data);
         alert(`image not campatible '}`);
       } else {
-        console.error('Error message:', error.message);
+        console.error("Error message:", error.message);
         alert(`image not campatible`);
       }
     }
   };
 
   return (
-    <div className='bg'>
-      <div className='bannerS'>Systéme de Gestion des Inventaires</div>
+    <div className="bg">
+      <div className="bannerS">Systéme de Gestion des Inventaires</div>
       <div className="home-containerS">
-        <div className="blueS"><h1>Inscription</h1></div>
-        <form onSubmit={handleSignup} className='formula'>
+        <div className="blueS">
+          <h1>Inscription</h1>
+        </div>
+        <form onSubmit={handleSignup} className="formula">
           <div>
             <input
               type="text"
@@ -70,7 +75,7 @@ function Signup() {
               required
             />
           </div>
-          
+
           <div>
             <input
               type="text"
@@ -102,7 +107,7 @@ function Signup() {
             <input
               type="file"
               accept="image/*"
-              onChange={handleImageChange} 
+              onChange={handleImageChange}
               required
             />
           </div>
@@ -111,8 +116,7 @@ function Signup() {
 
         <div>
           <p>
-            Vous avez déjà un compte?{' '}
-            <Link to="/login">Connexion ici</Link>
+            Vous avez déjà un compte? <Link to="/login">Connexion ici</Link>
           </p>
         </div>
       </div>
